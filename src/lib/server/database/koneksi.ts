@@ -1,7 +1,7 @@
 import { drizzle } from 'drizzle-orm/mysql2';
 import mysql from 'mysql2/promise';
 import { DATABASE_URL } from '$env/static/private';
-import * as schema from './schema.ts';
+import * as schema from './schema'; // Hapus .ts extension
 import ca from './ca.pem?raw';
 
 // Membuat koneksi pool agar efisien

@@ -1,4 +1,4 @@
-import { mysqlTable, serial, varchar, text, timestamp, datetime } from 'drizzle-orm/mysql-core';
+import { mysqlTable, serial, varchar, timestamp, datetime } from 'drizzle-orm/mysql-core';
 
 // 1. Tabel Admin Users
 export const adminUsers = mysqlTable('admin_users', {
@@ -13,5 +13,9 @@ export const adminUsers = mysqlTable('admin_users', {
     diperbaruiPada: timestamp('diperbarui_pada').defaultNow().onUpdateNow(),
 });
 
-// Kita akan menambahkan tabel lain (berita, divisi, dll) nanti saat mengerjakan fitur tersebut
-// agar Anda tidak bingung dengan kode yang terlalu panjang.
+// 2. Tabel Sessions (Untuk login)
+export const sessions = mysqlTable('sessions', {
+    id: varchar('id', { length: 255 }).primaryKey(),
+    userId: serial('user_id').references(() => adminUsers.id),
+    expiresAt: datetime('expires_at').notNull()
+});
