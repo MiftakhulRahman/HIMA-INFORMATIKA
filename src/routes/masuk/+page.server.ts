@@ -24,7 +24,7 @@ export const actions = {
         }
 
         // 2. Cek Password
-        const isValid = await verifyPassword(password, user.passwordHash);
+        const isValid = await verifyPassword(password, user.password);
         if (!isValid) {
             return fail(400, { error: 'Username atau password salah' });
         }
